@@ -1,0 +1,34 @@
+# AI and IDE specific
+.agents
+GEMINI.md
+.gemini/
+.cursor/
+.windsurf/
+.ai/
+ai_docs/
+skills-lock.json
+
+# Dependencies
+node_modules
+.pnpm-store
+
+# Build output
+dist
+.astro
+
+# Local configuration and logs
+*.log
+.env
+.env.local
+.env.*.local
+.DS_Store
+
+# Misc
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Vercel / Netlify
+.vercel
+.netlify
