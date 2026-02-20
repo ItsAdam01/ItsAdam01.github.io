@@ -9,6 +9,6 @@ tags:
 - Regex
 ---
 
-Building a Web Application Firewall (WAF) sounds straightforward until you actually turn it on. My first iteration blocked almost everything—including the CSS and JS files the site needed to function.
+Building a WAF sounds simple enough on paper until you actually deploy it. My first attempt was basically a security blanket that smothered the site—it blocked so much that even the CSS and JS files couldn't load.
 
-The lesson? Regex is powerful but blunt. I had to pivot from 'scan everything' to a targeted whitelist approach. I focused my inspection rules specifically on user-controlled inputs like request bodies and query parameters while ignoring static assets and infrastructure headers. It was a classic trade-off: security vs. usability. By the end, I had a system that was quiet during normal use but screamed when it saw an actual SQL injection pattern.
+I quickly learned that regex is a blunt instrument. If you're too aggressive, you break the site; if you're too passive, you're just wasting CPU cycles. I had to pivot to a whitelist-first approach, focusing my inspection rules on actual user-controlled inputs like request bodies and query strings while letting the boring infrastructure traffic pass through. It took some tuning, but I eventually hit that sweet spot where the system stays quiet until a real SQL injection attempt shows up.

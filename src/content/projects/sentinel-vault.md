@@ -12,15 +12,15 @@ tags:
 repoUrl: "https://github.com/ItsAdam01/Sentinel-Vault"
 ---
 
-I built Sentinel Vault to explore the mechanics of modern identity management and the critical role of visibility in security operations. The project serves as a proof-of-concept for integrating GitHub OAuth 2.0 and capturing granular telemetry for every access event.
+Sentinel Vault is a proof-of-concept I built to look deeper into identity management. I wanted to move beyond just 'letting users in' and focus on the technical context of every access event through detailed telemetry.
 
 ### The Challenge
-Most applications treat authentication as a 'black box'—either a user is in or they are out. I wanted to build a system where 'getting in' was just the beginning. The goal was to implement a standard OAuth 2.0 flow while simultaneously logging the environmental context of every session to detect anomalies.
+Most apps treat auth as a black box. Once a user is in, the system stops asking questions. I wanted to build something where 'getting in' was just the start. The goal was to implement a standard GitHub OAuth flow while logging the environmental data of every session to spot potential anomalies early.
 
 ### The Solution
-The system is built on Node.js and Express, utilizing Passport.js for the GitHub Authorization Code flow. To achieve high visibility, I integrated `ua-parser-js` to decompose user agents into readable device and OS profiles. Every event (successful logins, failed access attempts, unauthorized route hits) is captured in a SQLite database with the user's IP and detailed browser telemetry.
+I built the backend with Node.js and Express, using Passport.js for the Authorization Code flow. To get the visibility I wanted, I used `ua-parser-js` to break down user agents into OS and device profiles. I logged everything—login successes, failed attempts, and unauthorized route hits—into a SQLite database along with the user's IP and telemetry.
 
 ### Security Impact
-- **Comprehensive Audit Trail**: Created a system that records not just 'who' logged in, but 'what' they used and 'where' they came from.
-- **Real-time Monitoring**: Developed a dashboard with visual severity levels (INFO, WARN, ALERT) to provide an immediate overview of system health.
-- **Session Integrity**: Enforced strict session-based route protection, ensuring the 'Vault' and 'Audit' logs remain inaccessible to unauthorized users.
+- **Granular Audit Logs**: The system tracks exactly who logged in, what device they used, and their location (via IP).
+- **Security Dashboard**: I developed a simple monitoring view with INFO, WARN, and ALERT severity levels to give a quick overview of system health.
+- **Protected Routes**: I enforced strict session checks so that sensitive areas like the Vault and Audit logs stay restricted to authorized users only.

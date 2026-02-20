@@ -12,15 +12,15 @@ tags:
 repoUrl: "https://github.com/ItsAdam01/Lynx"
 ---
 
-Lynx is a real-time security agent designed to safeguard file system integrity. Built in Go, it monitors critical system files and notifies administrators immediately if unauthorized changes occur, using cryptographic proof to ensure the 'Source of Truth' remains untampered.
+Lynx is a security agent I built in Go to monitor file system changes in real-time. It uses cryptographic hashing to verify that critical files haven't been tampered with and alerts administrators as soon as a mismatch is detected.
 
 ### The Challenge
-File integrity monitors often suffer from two main issues: performance overhead and 'alert fatigue' caused by the frequent file events triggered by modern operating systems. My goal was to create a lightweight agent that could handle kernel-level events efficiently while filtering out the noise of normal system activity.
+Most FIMs either eat up too much CPU or bury you in alerts. My objective was to make Lynx lightweight enough to run in the background without affecting performance, while also being smart enough to filter out the noise from normal OS activities.
 
 ### The Solution
-I chose Go for its concurrency model and high-performance execution. Lynx utilizes the `fsnotify` library to listen for kernel file events directly. To ensure security, I implemented SHA-256 content hashing and protected the baseline configuration with HMAC-SHA256 signatures. I also developed a custom 500ms debouncing mechanism to merge the multiple rapid-fire events caused by 'atomic saves' into a single, meaningful alert.
+I used Go for its speed and concurrent nature. The agent uses `fsnotify` to listen for kernel-level file events directly. For security, I used SHA-256 for the file hashes and HMAC-SHA256 to sign the 'Source of Truth' baseline. This prevents an attacker from just updating the baseline to match their changes. I also added a 500ms debouncer to handle the 'atomic save' behavior of most modern code editors.
 
 ### Security Impact
-- **Self-Protecting Baseline**: By signing the baseline file with HMAC, Lynx ensures that even if an attacker gains local access, they cannot modify the 'Source of Truth' to hide their activity.
-- **Real-time Alerting**: Integrated asynchronous Discord and Slack webhooks, allowing for immediate remote notification of critical integrity failures.
-- **Recursive Security**: Built-in support for recursive directory watching ensures that the security perimeter automatically expands as new folders are created.
+- **Tamper-Proof Baseline**: Signing the baseline with HMAC means the agent can detect if its own configuration has been modified.
+- **Asynchronous Alerting**: I integrated Discord and Slack webhooks so that alerts are sent out immediately without blocking the main monitoring loop.
+- **Recursive Watching**: Lynx automatically adds new subdirectories to its watch list, so the security coverage grows as the project does.

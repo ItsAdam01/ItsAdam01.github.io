@@ -10,6 +10,6 @@ tags:
 - PostgreSQL
 ---
 
-During the Blueship resort booking project, I hit a major technical wall: the client needed to search for guests by email, but the security audit mandated that all PII (Personally Identifiable Information) must be encrypted at rest.
+While working on the Blueship resort project, I ran into a classic security conflict: the client needed to search for guests by email, but our audit requirements insisted that all PII had to be encrypted at rest.
 
-Standard encryption makes searching impossible without decrypting every row in the database—a performance nightmare. The solution was a 'Blind Index' pattern. I encrypted the actual email using AES-256-GCM for display, but created a separate column with a one-way HMAC-SHA256 hash of that same email. When a staff member searches, the system hashes their query and matches it against the index. Secure, fast, and compliant. It was my favorite architectural 'win' of the entire project.
+If you just encrypt a database column, you can't query it without decrypting everything first, which is a massive performance hit. My solution was to use a 'Blind Index' pattern. I kept the email encrypted with AES-256-GCM for display, but added a secondary column with a one-way HMAC-SHA256 hash of the email. To search, the system just hashes the user's query and checks it against that index. It's fast, compliant, and was easily my favorite technical win of the project.
