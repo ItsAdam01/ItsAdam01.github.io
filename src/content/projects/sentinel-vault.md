@@ -18,7 +18,7 @@ Sentinel Vault is a proof-of-concept I built to look deeper into identity manage
 Most apps treat auth as a black box. Once a user is in, the system stops asking questions. I wanted to build something where 'getting in' was just the start. The goal was to implement a standard GitHub OAuth flow while logging the environmental data of every session to spot potential anomalies early.
 
 ### The Solution
-I built the backend with Node.js and Express, using Passport.js for the Authorization Code flow. To get the visibility I wanted, I used `ua-parser-js` to break down user agents into OS and device profiles. I logged everything—login successes, failed attempts, and unauthorized route hits—into a SQLite database along with the user's IP and telemetry.
+I built the backend with Node.js and Express, using Passport.js for the Authorization Code flow. To get the visibility I wanted, I used `ua-parser-js` to break down user agents into OS and device profiles. I logged everything: login successes, failed attempts, and unauthorized route hits, into a SQLite database along with the user's IP and telemetry.
 
 ### Security Impact
 - **Granular Audit Logs**: The system tracks exactly who logged in, what device they used, and their location (via IP).

@@ -23,4 +23,7 @@ I used Go for its speed and concurrent nature. The agent uses `fsnotify` to list
 ### Security Impact
 - **Tamper-Proof Baseline**: Signing the baseline with HMAC means the agent can detect if its own configuration has been modified.
 - **Asynchronous Alerting**: I integrated Discord and Slack webhooks so that alerts are sent out immediately without blocking the main monitoring loop.
+
+![Lynx Discord Alerts](/images/lynx-discord-alerts.png)
+
 - **Recursive Watching**: Lynx automatically adds new subdirectories to its watch list, so the security coverage grows as the project does.
