@@ -27,20 +27,18 @@ jobs:
         with:
           node-version: 20
           cache: 'pnpm'
-          cache-dependency-path: 'adam-portfolio/astro-portfolio/pnpm-lock.yaml'
+          cache-dependency-path: 'pnpm-lock.yaml'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-        working-directory: adam-portfolio/astro-portfolio
 
       - name: Build
         run: pnpm run build
-        working-directory: adam-portfolio/astro-portfolio
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: adam-portfolio/astro-portfolio/dist
+          path: dist
 
   deploy:
     needs: build
