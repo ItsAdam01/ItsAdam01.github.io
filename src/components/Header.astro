@@ -1,5 +1,5 @@
 ---
-import { SITE, LINKS } from "@consts"
+import { SITE, LINKS, SHOW_RESUME, RESUME_HREF } from "@consts"
 import { cn } from "@lib/utils"
 const { pathname } = Astro.url
 const subpath = pathname.match(/[^/]+/g)
@@ -29,6 +29,11 @@ import Container from "@components/Container.astro"
             </a>
           ))
         }
+        {SHOW_RESUME && (
+          <a href={RESUME_HREF} target="_blank" class="h-8 rounded-full px-3 text-current flex items-center justify-center transition-colors duration-300 ease-in-out hover:bg-black/5 dark:hover:bg-white/20 hover:text-black dark:hover:text-white">
+            Resume
+          </a>
+        )}
       </nav>
     </div>
 

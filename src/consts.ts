@@ -31,6 +31,10 @@ export const SEARCH: Page = {
   DESCRIPTION: "Search all posts and projects by keyword.",
 }
 
+// Resume Toggle
+export const SHOW_RESUME = false
+export const RESUME_HREF = "/resume.pdf"
+
 // Links
 export const LINKS: Links = [
   { 

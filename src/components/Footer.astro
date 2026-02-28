@@ -1,5 +1,5 @@
 ---
-import { SITE, SOCIALS } from "@consts"
+import { SITE, SOCIALS, SHOW_RESUME, RESUME_HREF } from "@consts"
 import Container from "@components/Container.astro"
 ---
 
@@ -50,6 +50,13 @@ import Container from "@components/Container.astro"
               <a href="/legal/privacy" class="text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
                 Privacy
               </a>
+              {SHOW_RESUME && (
+                <>
+                  | <a href={RESUME_HREF} target="_blank" class="text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
+                    Resume
+                  </a>
+                </>
+              )}
             </div>
             <div class="text-sm mt-2">
               &copy; 2026 | All rights reserved
