@@ -7,6 +7,5 @@ import solidJs from "@astrojs/solid-js"
 // https://astro.build/config
 export default defineConfig({
   site: "https://ItsAdam01.github.io",
-  base: "/atienza-portfolio",
   integrations: [mdx(), sitemap(), solidJs(), tailwind({ applyBaseStyles: false })],
 })
