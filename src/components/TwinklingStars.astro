@@ -1,10 +1,4 @@
 ---
-/**
- * TwinkleStars.astro
- * This component creates twinkling stars that are appended to the galaxy on interval.
- * Twinkle stars are removed from the document after the animation is completed.
- * The svg below is just a template for the script to clone and append to the galaxy.
- */
 ---
 
 <svg 
@@ -37,11 +31,9 @@
 </svg>
 
 <script is:inline>
-  // Generate a twinkle star and append it to the galaxy, remove it after animation.
   function generateTwinkleStar() {
     const twinkleStarTemplate = document.getElementById("twinkle-star")
     if (!twinkleStarTemplate) { return; }
-    // Clone the twinkle star template and set its attributes.
     const twinkleStar = twinkleStarTemplate.cloneNode(true);
     twinkleStar.style.position = "absolute";
     twinkleStar.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
@@ -51,7 +43,6 @@
     twinkleStar.classList.add("twinkle");
     document.getElementById("galaxy").appendChild(twinkleStar);
 
-    // Remove the twinkle star after the animation is completed.
     setTimeout(() => {
       twinkleStar.remove();
     }, 2500);

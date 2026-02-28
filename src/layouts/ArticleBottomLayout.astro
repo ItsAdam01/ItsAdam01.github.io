@@ -5,12 +5,10 @@ type Props = {
   entry: CollectionEntry<"blog"> | CollectionEntry<"projects">
 }
 
-// Get the requested entry
 const { entry } = Astro.props
 const { collection } = entry
 const { Content } = await entry.render()
 
-// Get the next and prev entries (modulo to wrap index)
 const items = (await getCollection(collection))
   .filter(post => !post.data.draft)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())

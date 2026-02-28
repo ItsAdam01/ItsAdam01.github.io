@@ -71,12 +71,9 @@ export default function SearchCollection({ entry_name, data, tags }: Props) {
 
   return (
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-      {/* Control Panel*/}
       <div class="col-span-3 sm:col-span-1">
         <div class="sticky top-24 mt-7">
-          {/* Search Bar */}
           <SearchBar onSearchInput={onSearchInput} query={query} setQuery={setQuery} placeholderText={`Search ${entry_name}`} />
-          {/* Tag Filters */}
           <div class="relative flex flex-row justify-between w-full"><p class="text-sm font-semibold uppercase my-4 text-black dark:text-white">Tags</p>
             {filter().size > 0 && (
               <button
@@ -131,10 +128,8 @@ export default function SearchCollection({ entry_name, data, tags }: Props) {
           </ul>
         </div>
       </div>
-      {/* Posts */}
       <div class="col-span-3 sm:col-span-2">
         <div class="flex flex-col">
-          {/* Info Bar */}
           <div class='flex justify-between flex-row mb-2'>
             <div class="text-sm uppercase">
               SHOWING {collection().length} OF {data.length} {entry_name}
