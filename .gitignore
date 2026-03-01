@@ -1,13 +1,3 @@
-# AI and IDE specific
-.agents
-GEMINI.md
-.gemini/
-.cursor/
-.windsurf/
-.ai/
-ai_docs/
-skills-lock.json
-
 # Dependencies
 node_modules
 .pnpm-store
