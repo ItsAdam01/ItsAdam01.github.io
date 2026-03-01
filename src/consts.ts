@@ -3,7 +3,7 @@ import type { Site, Page, Links, Socials } from "@types"
 // Global
 export const SITE: Site = {
   TITLE: "Adam Atienza",
-  DESCRIPTION: "Portfolio and blog of Adam Atienza, a cybersecurity specialist.",
+  DESCRIPTION: "Portfolio and blog of Adam Atienza, a Cybersecurity Specialist focusing on Defensive Operations and Threat Analysis.",
   AUTHOR: "Adam Atienza",
 }
 
